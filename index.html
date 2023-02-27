@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let nameArr = [];
+    function addName() {
+        let name = document.querySelector("input").value;
+        nameArr.push(name);
+        display();
+    }
+    function display() {
+
+        let str = "";
+    let nm  = nameArr[nameArr.length -1];
+       let li = document.createElement("li");
+       li.innerText = nm;
+       li.id = nm;
+         document.getElementById("display").appendChild(li); 
+          
+    }
+    function getIndex(name) {
+
+        let index = 0;
+        for(nm  of nameArr) {
+            if(nm == name) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    function modify() {
+        let name = document.querySelector("input").value;
+      let index = getIndex(name);
+        if(index != -1) {
+            let newName = prompt("enter new name");
+            nameArr[index] = newName;
+            document.getElementById(name).innerText = newName;
+        }
+       
+    }
+    function searchName() {
+        let name = document.querySelector("input").value;
+       let index = getIndex(name);
+       if(index != -1) {
+        document.getElementById("dis").innerHTML = "<h3> element found on index number " + index + "</h3>";
+       }
+    }
+
+    function delete_n() {
+        let name = document.querySelector("input").value;
+       let index = getIndex(name);
+       if(index != -1) {
+       let list = document.getElementById("display");
+       document.getElementById("display").removeChild(list.children[index]);
+    }
+    }
+</script>
+<body>
+    <label for="name">Enter Text</label>
+    <input type="text" name="name" id="name" required>
+    <input type="button" onclick="addName()" name="Add_name" value="Add name">
+    <input type="button" onclick="modify()" name="Modify_name" value="Modify name">
+    <input type="button" onclick="delete_n()" name="Delete_Name" value="Delete Name">
+    <input type="button" onclick="searchName()" name="Search_Name" value="Search Name">
+
+    <aside>
+        <ol id="display">
+
+        </ol>
+    </aside>
+    <span id="dis"></span>
+</body>
+</html>

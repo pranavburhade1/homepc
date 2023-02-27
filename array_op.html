@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = [22,05,99,22,13,99, 13, 53];
+        function showUnique_ele() {
+           
+           var span2 =  document.getElementById("span2")
+            var str = "unique elements are : ";
+            for(let i =0; i < arr.length; i++) {
+               let flag = false;
+                for(let k = 0; k < arr.length; k++) {
+                    if(i != k && arr[i] == arr[k]) {
+                        flag = true;
+                    }
+                }
+                if(flag == false) {
+                    str += arr[i] + ","
+                }
+            }
+            span2.innerHTML = str;
+        }
+
+        function showArrayelement() {
+            let string = "";
+            var span1 =  document.getElementById("span1")
+            for(let i =0; i < arr.length; i++) {
+                string += arr[i] + ",";
+            }
+            span1.innerHTML = string;
+        }
+       function showNoAccurance() {
+        let string = "<br>";
+        var span3 =  document.getElementById("span3")
+        for(let i =0; i < arr.length; i++) {
+               let flag = false;
+                for(let k = 0; k < arr.length; k++) {
+                    if(i != k && arr[i] == arr[k]) {
+                        flag = true;
+                    }
+                }
+                if(flag == false) {
+                    string += "unique element " + arr[i] + " ocuured on " + i + " index." + "<br>"
+                }
+            }
+            span3.innerHTML = string;
+        }
+        
+        function arrayData() {
+            let arrNew = [];
+            let span4 = document.getElementById("span4");
+            let string = "your entered array is "
+            let length = prompt("Enter array length");
+            for(let i = 0; i < length; i++) {
+                arrNew[i] = prompt("Enter array element");
+            }
+            for(let k = 0; k < length; k++) {
+                string += arrNew[k] + ",";
+            }
+            string += "<br>print by sorted : "
+            for(let i =0; i < arrNew.length -1; i++) {
+                for(let k = 0; k < arrNew.length -1; k++) {
+             if(arrNew[k] > arrNew[k +1]) {
+				let  temp = arrNew[k];
+				arrNew[k] = arrNew[k +1];
+				arrNew[k +1] = temp;
+                }
+        }}
+        for(let k = 0; k < length; k++) {
+                string += arrNew[k] + ",";
+            }
+            span4.innerHTML = string;
+    }
+
+    </script>
+</head>
+<body>
+    <input type="button" id="btn1" value="show array element" onclick="showArrayelement()">
+    <span id="span1"></span>
+    <br><br>
+    <input type="button" id="btn2" value="show unique element in array" onclick="showUnique_ele();">
+    <span id="span2"></span>
+    <br><br>
+    <input type="button" id="btn3" value="show no of occurence of unique element" onclick="showNoAccurance()">
+    <span id="span3"></span>
+    <br><br>
+    <input type="button" id="btn4" value="enter array data" onclick="arrayData()">
+    <span id="span4"></span>
+</body>
+</html>
